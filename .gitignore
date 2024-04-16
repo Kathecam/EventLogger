@@ -1,0 +1,42 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Compiled output
+./EventLoggerInterface/dist
+./EventLoggerInterface/tmp
+./EventLoggerInterface/out-tsc
+./EventLoggerInterface/bazel-out
+
+# Node
+./EventLoggerInterface/node_modules
+./EventLoggerInterface/npm-debug.log
+./EventLoggerInterface/yarn-error.log
+
+# IDEs and editors
+./EventLoggerInterface/.idea/
+./EventLoggerInterface/.project
+./EventLoggerInterface/.classpath
+./EventLoggerInterface/.c9/
+./EventLoggerInterface/*.launch
+./EventLoggerInterface/.settings/
+./EventLoggerInterface/*.sublime-workspace
+
+# Visual Studio Code
+./EventLoggerInterface/.vscode/*
+./EventLoggerInterface/!.vscode/settings.json
+./EventLoggerInterface/!.vscode/tasks.json
+./EventLoggerInterface/!.vscode/launch.json
+./EventLoggerInterface/!.vscode/extensions.json
+./EventLoggerInterface/.history/*
+
+# Miscellaneous
+./EventLoggerInterface/.angular/cache
+./EventLoggerInterface/.sass-cache/
+./EventLoggerInterface/connect.lock
+./EventLoggerInterface/coverage
+./EventLoggerInterface/libpeerconnection.log
+./EventLoggerInterface/testem.log
+./EventLoggerInterface/typings
+
+# System files
+./EventLoggerInterface/.DS_Store
+./EventLoggerInterface/Thumbs.db

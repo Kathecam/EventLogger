@@ -1,0 +1,100 @@
+<div class="h-screen flex items-center flex-col">
+    <div class="w-8/12">
+        <app-header />
+        <div class="flex justify-between">
+            <form class="w-5/6" [formGroup]="form">
+                <div class="flex flex-wrap -mx-3 mb-6">
+                    <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                            for="grid-first-name">
+                            Fecha Inicio
+                        </label>
+                        <input
+                            formControlName="startDate"
+                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                            id="grid-first-name" type="date">
+                    </div>
+                    <div class="w-full md:w-1/4 px-3">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                            for="grid-last-name">
+                            Fecha Fin
+                        </label>
+                        <input
+                            formControlName="endDate"
+                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            id="grid-last-name" type="date">
+                    </div>
+                    <div class="w-full md:w-1/4 px-3">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                            for="grid-last-name">
+                            Tipo evento
+                        </label>
+                        <select
+                            formControlName="typeEvent"
+                            class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            id="grid-state">
+                            <option value="">- seleccione una opción -</option>
+                            <option value="Api">Api</option>
+                            <option value="ManualEvent">Formulario de eventos manuales</option>
+                        </select>
+                    </div>
+                    <div class="flex items-end">
+                        <button type="button" (click)="search()"
+                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-4 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Buscar</button>
+                    </div>
+                </div>
+            </form>
+            <div class="flex items-center">
+                <button type="button" (click)="goToForm()"
+                    class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-4 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Agregar
+                    Log
+                </button>
+            </div>
+        </div>
+        <div class="w-full relative max-h-96 overflow-y-scroll">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead
+                    class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 sticky top-0">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Id
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Fecha
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Descripción
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Tipo Evento
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (event of filterDataEvent; track event.eventLogId) {
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{ event.eventLogId }}
+                        </th>
+                        <td class="px-6 py-4">
+                            {{ event.dateTime | date }}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ event.description }}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ event.typeEvent }}
+                        </td>
+                    </tr>
+                    } @empty {
+                    <tr>
+                        <td colspan="4" class="px-6 py-4 text-center">
+                            No se encuentran datos registrados
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
